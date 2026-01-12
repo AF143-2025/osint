@@ -1,69 +1,193 @@
-<!DOCTYPE html><html lang="ar" dir="rtl">
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>AF143 | OSINT Professional Platform</title><style>
-*{box-sizing:border-box}
-body{margin:0;font-family:"Segoe UI",Tahoma,Arial,sans-serif;background:#0f1113;color:#e5e7eb}
+<title>AF143 | OSINT Professional Platform</title>
 
+<style>
+/* =========================
+   RESET & BASE
+========================= */
+*{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+body{
+  font-family:"Segoe UI",Tahoma,Arial,sans-serif;
+  background:#0f1113;
+  color:#e5e7eb;
+  line-height:1.6;
+}
+
+/* =========================
+   ROOT VARIABLES
+========================= */
 :root{
-  --bg:#050607;
   --panel:#0b1220;
   --panel-2:#0f1a2e;
   --border:#1f2937;
-  --accent:#22c55e;        /* أخضر */
-  --accent-soft:#4ade80;   /* أخضر فاتح */
-  --accent-blue:#38bdf8;   /* أزرق سماوي */
+  --accent:#22c55e;
+  --accent-soft:#4ade80;
+  --accent-blue:#38bdf8;
 }
 
-header{background:#0f1113;padding:60px 20px 45px;text-align:center;border-bottom:1px solid var(--border)}
-header h1{margin:0;font-size:2.8rem;color:var(--accent)}
-header p{margin-top:14px;color:#d1d5db;max-width:900px;margin-inline:auto}
+/* =========================
+   HEADER
+========================= */
+header{
+  background:#0f1113;
+  padding:70px 20px 50px;
+  text-align:center;
+  border-bottom:1px solid var(--border);
+}
 
-main{max-width:1400px;margin:auto;padding:50px 20px 80px}
+header h1{
+  font-size:2.7rem;
+  color:var(--accent);
+  margin-bottom:14px;
+}
 
-.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:28px}
+header p{
+  color:#d1d5db;
+  max-width:900px;
+  margin:auto;
+  font-size:1.05rem;
+}
 
+/* =========================
+   MAIN LAYOUT
+========================= */
+main{
+  max-width:1500px;
+  margin:auto;
+  padding:60px 20px 100px;
+}
+
+.grid{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
+  gap:30px;
+}
+
+/* =========================
+   OSINT CARD
+========================= */
 .osint-card{
   background:linear-gradient(160deg,var(--panel),var(--panel-2));
   border:1px solid var(--border);
   border-radius:22px;
-  padding:24px;
+  padding:26px;
   cursor:pointer;
   transition:all .35s ease;
 }
 
 .osint-card:hover{
   border-color:var(--accent-blue);
-  box-shadow:0 35px 80px rgba(56,189,248,.35);
+  box-shadow:0 30px 80px rgba(56,189,248,.35);
   transform:translateY(-6px);
 }
 
 .osint-card.active{
   border-color:var(--accent);
-  box-shadow:0 0 0 1px rgba(74,222,128,.4),0 40px 100px rgba(34,197,94,.45);
+  box-shadow:0 40px 100px rgba(34,197,94,.45);
 }
 
-.osint-card h3{margin:0 0 10px;font-size:1.35rem;color:var(--accent-soft)}
-.osint-card p{margin:0 0 18px;font-size:.95rem;color:#cbd5f5}
+/* =========================
+   CARD TEXT
+========================= */
+.osint-card h3{
+  font-size:1.35rem;
+  color:var(--accent-soft);
+  margin-bottom:10px;
+  text-align:center;
+}
 
-.tools{display:none;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:14px}
-.osint-card.active .tools{display:grid}
+.osint-card p{
+  font-size:.95rem;
+  color:#cbd5f5;
+  text-align:center;
+  margin-bottom:22px;
+}
 
-.tool{background:#0a0a0e;border:1px solid var(--border);border-radius:14px;padding:12px;transition:.2s}
-.tool:hover{border-color:var(--gold-soft)}
-.tool a{color:var(--accent);text-decoration:none;font-weight:600;font-size:.95rem}
+/* =========================
+   TOOLS GRID
+========================= */
+.tools{
+  display:none;
+  grid-template-columns:repeat(auto-fit,minmax(200px,1fr));
+  gap:14px;
+}
 
-footer{border-top:1px solid var(--border);padding:22px;text-align:center;color:#9ca3af;background:#0f1113}
-footer span{color:var(--gold)}
-</style></head>
-<body><header>
-  <h1>AF143 OSINT </h1>
-  <p>منصة OSINT احترافية متكاملة، مبنية وفق المعايير الحقيقية للتحقيقات الرقمية وجمع المعلومات من المصادر المفتوحة</p>
-</header><main>
-<div class="grid"><!-- USERNAME OSINT --><div class="osint-card" onclick="toggle(this)">
-<h3>🧑‍💻 Username OSINT</h3>
-<p>تحليل وتتبع أسماء المستخدمين عبر المنصات</p>
+.osint-card.active .tools{
+  display:grid;
+}
+
+/* =========================
+   TOOL ITEM
+========================= */
+.tool{
+  background:#0a0a0e;
+  border:1px solid var(--border);
+  border-radius:14px;
+  padding:16px 10px;
+  text-align:center;
+  transition:.25s ease;
+}
+
+.tool:hover{
+  border-color:var(--accent-blue);
+  background:#0f172a;
+}
+
+/* الاسم فقط – قابل للضغط */
+.tool a{
+  display:block;
+  width:100%;
+  height:100%;
+  color:var(--accent);
+  text-decoration:none;
+  font-weight:600;
+  font-size:.95rem;
+}
+
+/* =========================
+   FOOTER
+========================= */
+footer{
+  border-top:1px solid var(--border);
+  padding:24px;
+  text-align:center;
+  color:#9ca3af;
+  background:#0f1113;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media(max-width:600px){
+  header h1{font-size:2.2rem}
+  .osint-card{padding:22px}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>AF143 OSINT</h1>
+  <p>منصة OSINT احترافية شاملة للتحقيقات الرقمية وجمع المعلومات من المصادر المفتوحة</p>
+</header>
+
+<main>
+<div class="grid">
+
+<!-- USERNAME OSINT -->
+<div class="osint-card" onclick="toggle(this)">
+<h3>Username OSINT</h3>
+<p>تحليل وتتبع أسماء المستخدمين</p>
 <div class="tools">
 <div class="tool"><a href="https://github.com/sherlock-project/sherlock" target="_blank">Sherlock</a></div>
 <div class="tool"><a href="https://whatsmyname.app" target="_blank">WhatsMyName</a></div>
@@ -71,116 +195,104 @@ footer span{color:var(--gold)}
 <div class="tool"><a href="https://namecheckup.com" target="_blank">NameCheckup</a></div>
 <div class="tool"><a href="https://checkusernames.com" target="_blank">CheckUsernames</a></div>
 <div class="tool"><a href="https://www.usersearch.org" target="_blank">UserSearch</a></div>
-<div class="tool"><a href="https://kik.me" target="_blank">Kik.me</a></div>
-</div></div><!-- EMAIL OSINT --><div class="osint-card" onclick="toggle(this)">
-<h3>📧 Email OSINT</h3>
-<p>تحليل البريد الإلكتروني والسمعة والتسريبات</p>
+<div class="tool"><a href="https://kik.me" target="_blank">Kik</a></div>
+</div>
+</div>
+
+<!-- EMAIL & IDENTITY -->
+<div class="osint-card" onclick="toggle(this)">
+<h3>Email & Identity OSINT</h3>
+<p>البريد الإلكتروني والهوية الرقمية</p>
 <div class="tools">
-<div class="tool"><a href="https://epieos.com" target="_blank">Epieos</a></div>
-<div class="tool"><a href="https://hunter.io" target="_blank">Hunter.io</a></div>
-<div class="tool"><a href="https://emailrep.io" target="_blank">EmailRep</a></div>
-<div class="tool"><a href="https://phonebook.cz" target="_blank">Phonebook.cz</a></div>
-<div class="tool"><a href="https://verifyemail.io" target="_blank">VerifyEmail</a></div>
-<div class="tool"><a href="https://email-checker.net" target="_blank">Email Checker</a></div>
-<div class="tool"><a href="https://github.com/megadose/mosint" target="_blank">Mosint</a></div>
-<div class="tool"><a href="https://github.com/mxrch/GHunt" target="_blank">GHunt</a></div>
-<div class="tool"><a href="https://www.spiderfoot.net" target="_blank">SpiderFoot</a></div>
-</div></div><!-- BREACH OSINT --><div class="osint-card" onclick="toggle(this)">
-<h3>🔐 Breach & Leak OSINT</h3>
-<p>فحص كلمات السر والتسريبات</p>
-<div class="tools">
-<div class="tool"><a href="https://haveibeenpwned.com" target="_blank">Have I Been Pwned</a></div>
-<div class="tool"><a href="https://snusbase.com" target="_blank">Snusbase</a></div>
-<div class="tool"><a href="https://leak-lookup.com" target="_blank">Leak-Lookup</a></div>
-<div class="tool"><a href="https://dehashed.com" target="_blank">DeHashed</a></div>
-<div class="tool"><a href="https://intelx.io" target="_blank">IntelX</a></div>
-<div class="tool"><a href="https://databreach.com" target="_blank">DataBreach</a></div>
-</div></div><!-- IMAGE OSINT --><div class="osint-card" onclick="toggle(this)">
-<h3>🖼️ Image OSINT</h3>
-<p>مصدر الصور وتحليل EXIF والبيانات الوصفية</p>
-<div class="tools">
-<div class="tool"><a href="https://images.google.com" target="_blank">Google Images</a></div>
-<div class="tool"><a href="https://bing.com/images" target="_blank">Bing Images</a></div>
-<div class="tool"><a href="https://duckduckgo.com/?ia=images" target="_blank">DuckDuckGo Images</a></div>
-<div class="tool"><a href="https://yandex.com/images" target="_blank">Yandex Images</a></div>
-<div class="tool"><a href="https://tineye.com" target="_blank">TinEye</a></div>
-<div class="tool"><a href="https://exif.tools" target="_blank">Exif.tools</a></div>
-<div class="tool"><a href="https://onlineexifviewer.com" target="_blank">Online EXIF Viewer</a></div>
-<div class="tool"><a href="https://jimpl.com" target="_blank">Jimpl</a></div>
-<div class="tool"><a href="https://exifinfo.org" target="_blank">ExifInfo</a></div>
-<div class="tool"><a href="https://exifdata.com" target="_blank">ExifData</a></div>
-<div class="tool"><a href="https://exifeditor.io" target="_blank">ExifEditor</a></div>
-<div class="tool"><a href="https://pics.io" target="_blank">Pics.io</a></div>
-</div></div><!-- PHONE OSINT --><div class="osint-card" onclick="toggle(this)">
-<h3>📞 Phone OSINT</h3>
+<div class="tool"><a href="https://epieos.com">Epieos</a></div>
+<div class="tool"><a href="https://hunter.io">Hunter</a></div>
+<div class="tool"><a href="https://emailrep.io">EmailRep</a></div>
+<div class="tool"><a href="https://phonebook.cz">Phonebook.cz</a></div>
+<div class="tool"><a href="https://verifyemail.io">VerifyEmail</a></div>
+<div class="tool"><a href="https://email-checker.net">Email Checker</a></div>
+<div class="tool"><a href="https://www.emailondeck.com">EmailOnDeck</a></div>
+<div class="tool"><a href="https://www.idcrawl.com">IDCrawl</a></div>
+<div class="tool"><a href="https://www.familysearch.org/en/united-states/">FamilySearch</a></div>
+<div class="tool"><a href="https://namsor.app/">NamSor</a></div>
+</div>
+</div>
+
+<!-- PHONE OSINT -->
+<div class="osint-card" onclick="toggle(this)">
+<h3>Phone OSINT</h3>
 <p>تحليل وتتبع أرقام الهواتف</p>
 <div class="tools">
-<div class="tool"><a href="https://github.com/sundowndev/phoneinfoga" target="_blank">PhoneInfoga</a></div>
-<div class="tool"><a href="https://www.truecaller.com" target="_blank">Truecaller</a></div>
-<div class="tool"><a href="https://sync.me" target="_blank">Sync.me</a></div>
-</div></div><!-- SOCIAL MEDIA OSINT --><div class="osint-card" onclick="toggle(this)">
-<h3>🛜 Social Media OSINT</h3>
-<p>تحليل حسابات ومنصات التواصل الاجتماعي</p>
+<div class="tool"><a href="https://github.com/sundowndev/phoneinfoga">PhoneInfoga</a></div>
+<div class="tool"><a href="https://www.truecaller.com">Truecaller</a></div>
+<div class="tool"><a href="https://sync.me">Sync.me</a></div>
+<div class="tool"><a href="https://www.numlookup.com">NumLookup</a></div>
+<div class="tool"><a href="https://www.spydialer.com">SpyDialer</a></div>
+<div class="tool"><a href="https://calleridtest.com">CallerIDTest</a></div>
+<div class="tool"><a href="https://www.comfi.com/abook/reverse">Comfi Reverse</a></div>
+<div class="tool"><a href="https://www.numberingplans.com">NumberingPlans</a></div>
+<div class="tool"><a href="https://oldphonebook.com">OldPhoneBook</a></div>
+<div class="tool"><a href="https://www.unitedstatesphonebook.com">US PhoneBook</a></div>
+</div>
+</div>
+
+<!-- BREACH -->
+<div class="osint-card" onclick="toggle(this)">
+<h3> Breach & Leak OSINT</h3>
+<p>التسريبات وقواعد البيانات</p>
 <div class="tools">
-<div class="tool"><a href="https://github.com/twintproject/twint" target="_blank">Twint</a></div>
-<div class="tool"><a href="https://github.com/novitae/instagram-osint" target="_blank">Instagram OSINT Tool</a></div>
-<div class="tool"><a href="https://www.maltego.com" target="_blank">Maltego</a></div>
-<div class="tool"><a href="https://www.spiderfoot.net" target="_blank">SpiderFoot</a></div>
-<div class="tool"><a href="https://github.com/ilektrojohn/creepy" target="_blank">Creepy</a></div>
-</div></div><!-- NETWORK OSINT --><div class="osint-card" onclick="toggle(this)">
-<h3>🌐 Network & Infrastructure OSINT</h3>
-<p>تحليل الشبكات والنطاقات والبنية التحتية</p>
+<div class="tool"><a href="https://haveibeenpwned.com">Have I Been Pwned</a></div>
+<div class="tool"><a href="https://haveibeenzuckered.com">Have I Been Zuckered</a></div>
+<div class="tool"><a href="https://leakpeek.com">LeakPeek</a></div>
+<div class="tool"><a href="https://breachdirectory.org">BreachDirectory</a></div>
+<div class="tool"><a href="https://dehashed.com">DeHashed</a></div>
+<div class="tool"><a href="https://intelx.io">IntelX</a></div>
+<div class="tool"><a href="https://databreach.com">DataBreach</a></div>
+</div>
+</div>
+
+<!-- SOCIAL MEDIA -->
+<div class="osint-card" onclick="toggle(this)">
+<h3>Social Media OSINT</h3>
+<p>تحليل منصات التواصل الاجتماعي</p>
 <div class="tools">
-<div class="tool"><a href="https://shodan.io" target="_blank">Shodan</a></div>
-<div class="tool"><a href="https://search.censys.io" target="_blank">Censys</a></div>
-<div class="tool"><a href="https://fofa.info" target="_blank">FOFA</a></div>
-<div class="tool"><a href="https://criminalip.io" target="_blank">Criminal IP</a></div>
-<div class="tool"><a href="https://crt.sh" target="_blank">crt.sh</a></div>
-<div class="tool"><a href="https://dnsdumpster.com" target="_blank">DNSDumpster</a></div>
-<div class="tool"><a href="https://wigle.net" target="_blank">Wigle</a></div>
-<div class="tool"><a href="https://leakix.net" target="_blank">LeakIX</a></div>
-</div></div><!-- GEOINT --><div class="osint-card" onclick="toggle(this)">
-<h3>🗺️ GEOINT</h3>
-<p>تحديد وتحليل المواقع الجغرافية</p>
+<div class="tool"><a href="https://www.social-searcher.com">Social Searcher</a></div>
+<div class="tool"><a href="https://findidfb.com">FindIDFB</a></div>
+<div class="tool"><a href="https://fameswap.com/tool-instagram-user-id">Instagram ID</a></div>
+<div class="tool"><a href="https://commentpicker.com/instagram-user-id.php">Instagram ID Tool</a></div>
+<div class="tool"><a href="https://i.instagram.com/api/v1/users/user_id/info/">Instagram API</a></div>
+<div class="tool"><a href="https://github.com/twintproject/twint">Twint</a></div>
+<div class="tool"><a href="https://www.maltego.com">Maltego</a></div>
+</div>
+</div>
+
+<!-- UTILITIES -->
+<div class="osint-card" onclick="toggle(this)">
+<h3> Utilities</h3>
+<p>أدوات مساعدة</p>
 <div class="tools">
-<div class="tool"><a href="https://www.google.com/maps" target="_blank">Google Maps</a></div>
-<div class="tool"><a href="https://earth.google.com" target="_blank">Google Earth</a></div>
-<div class="tool"><a href="https://geospy.ai" target="_blank">GeoSpy</a></div>
-</div></div><!-- RECON & DATA EXTRACTION --><div class="osint-card" onclick="toggle(this)">
-<h3>🛠️ Recon & Data Extraction</h3>
-<p>جمع وتحليل البيانات المتقدمة</p>
-<div class="tools">
-<div class="tool"><a href="https://www.exploit-db.com" target="_blank">ExploitDB</a></div>
-<div class="tool"><a href="https://github.com/laramies/theHarvester" target="_blank">theHarvester</a></div>
-<div class="tool"><a href="https://github.com/OWASP/Amass" target="_blank">Amass</a></div>
-<div class="tool"><a href="https://github.com/projectdiscovery/subfinder" target="_blank">Subfinder</a></div>
-<div class="tool"><a href="https://github.com/aboul3la/Sublist3r" target="_blank">Sublist3r</a></div>
-<div class="tool"><a href="https://github.com/lanmaster53/recon-ng" target="_blank">Recon-ng</a></div>
-<div class="tool"><a href="https://github.com/laramies/metagoofil" target="_blank">Metagoofil</a></div>
-</div></div><!-- CODE & ARCHIVES --><div class="osint-card" onclick="toggle(this)">
-<h3>🧑‍💻 Code & Archives OSINT</h3>
-<p>تحليل الكود والأرشيفات</p>
-<div class="tools">
-<div class="tool"><a href="https://github.com" target="_blank">GitHub</a></div>
-<div class="tool"><a href="https://github.com/zricethezav/gitleaks" target="_blank">GitLeaks</a></div>
-<div class="tool"><a href="https://archive.org" target="_blank">Archive.org</a></div>
-<div class="tool"><a href="https://web.archive.org" target="_blank">Wayback Machine</a></div>
-<div class="tool"><a href="https://github.com/ninoseki/mitaka" target="_blank">Mitaka</a></div>
-</div></div><!-- OSINT PLATFORMS --><div class="osint-card" onclick="toggle(this)">
-<h3>🧭 OSINT Platforms</h3>
-<p>منصات OSINT الشاملة</p>
-<div class="tools">
-<div class="tool"><a href="https://osint.intelligenceonchain.com" target="_blank">Intelligence On Chain</a></div>
-<div class="tool"><a href="https://osint.nova-saas.com" target="_blank">OSINT Navigator</a></div>
-<div class="tool"><a href="https://osintframework.com" target="_blank">OSINT Framework</a></div>
-</div></div></div>
-</main><footer>
-© 2026 <span>AF143 Team</span> | Professional OSINT Platform
-</footer><script>
+<div class="tool"><a href="https://timestamp-converter.com">Timestamp Converter</a></div>
+</div>
+</div>
+
+</div>
+</main>
+
+<footer>
+© 2026 AF143 Team | Professional OSINT Platform
+</footer>
+
+<script>
 function toggle(card){
-  document.querySelectorAll('.osint-card').forEach(c=>{if(c!==card)c.classList.remove('active')})
-  card.classList.toggle('active')
+  document.querySelectorAll('.osint-card').forEach(c=>{
+    if(c!==card) c.classList.remove('active');
+  });
+  card.classList.toggle('active');
 }
-document.querySelectorAll('.tool a').forEach(a=>a.addEventListener('click',e=>e.stopPropagation()))
-</script></body>
+
+document.querySelectorAll('.tool a').forEach(a=>{
+  a.addEventListener('click',e=>e.stopPropagation());
+});
+</script>
+
+</body>
 </html>
